@@ -1,0 +1,119 @@
+<h3 class="text-center">MODAL</h3>
+<div class="row" style="margin: 50px 0;">
+  <div class="col-sm-8">
+    <p><strong>NGX</strong></p>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Tytuł</label>
+      <div class="col-sm-10">
+        <input type="text" [(ngModel)]="opt.title" class="form-control">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Wiadomość</label>
+      <div class="col-sm-10">
+        <input type="text" [(ngModel)]="opt.content" class="form-control">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">icon</label>
+      <div class="col-sm-4">
+        <select [(ngModel)]="opt.icon" class="form-control">
+          <option value="">no</option>
+          <option value="warning">warning</option>
+          <option value="error">error</option>
+          <option value="success">success</option>
+          <option value="info">info</option>
+          <option value="question">question</option>
+        </select>
+      </div>
+      <label class="col-sm-2 col-form-label">Size</label>
+      <div class="col-sm-4">
+        <select [(ngModel)]="opt.size" class="form-control">
+          <option value="sm">sm</option>
+          <option value="lg">lg</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label"></label>
+      <div class="col-sm-4">
+        <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="opt.showCloseButton">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Wyświetlaj przycisk <strong>Zamknij</strong> w prawym górnym rogu</span>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4" style="padding-top: 40px;">
+    <button class="btn btn-default btn-block"
+            (click)="dialogService.alert(opt.title || 'Tytuł', opt.content || 'Komunikat ？', opt)">Show alert</button>
+    <button class="btn btn-default btn-block" (click)="bConfirm()">Show confirm</button>
+    <p *ngIf="confirm_result">Result:{{confirm_result}}</p>
+  </div>
+</div>
+<h3 class="text-center">Warianty</h3>
+<div class="row">
+  <div class="col-sm-4 text-right">
+    <b>Alert example: </b>
+  </div>
+  <div class="col-sm-4">
+    <button class="btn btn-default btn-block" (click)=showAlert()>Show alert</button>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col-sm-4 text-right">
+    <b>Confirm example: </b>
+  </div>
+  <div class="col-sm-4">
+    <button class="btn btn-default btn-block" (click)=showConfirm()>Show confirm</button>
+  </div>
+  <div class="col-sm-4" *ngIf="confirmResult != null">
+    <span>Result: </span>
+    <b [ngClass]="{'text-danger': !confirmResult, 'text-success': confirmResult}">{{confirmResult ? 'Accepted': 'Declined'}}</b>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col-sm-4 text-right">
+    <b>Close dialog by click outside example: </b>
+  </div>
+  <div class="col-sm-4">
+    <button class="btn btn-default btn-block" (click)=showAlert2()>Show alert</button>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col-sm-4 text-right">
+    <b>Click outside only close button: </b>
+  </div>
+  <div class="col-sm-4">
+    <button class="btn btn-default btn-block" (click)=showAlert5()>Show alert</button>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col-sm-4 text-right">
+    <b>Close dialog by timeout example: </b>
+  </div>
+  <div class="col-sm-4">
+    <button class="btn btn-default btn-block" (click)=showAlert3()>Show alert</button>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col-sm-4 text-right">
+    <b>Custom backdrop color example: </b>
+  </div>
+  <div class="col-sm-4">
+    <button class="btn btn-default btn-block" (click)=showAlert4()>Show alert</button>
+  </div>
+</div>
+<br>
+<br>
